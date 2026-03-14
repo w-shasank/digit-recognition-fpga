@@ -1,0 +1,27 @@
+[
+  {
+    "directory": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component",
+    "arguments": [
+      "/tools/Xilinx/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/tools/Xilinx/Vivado/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls",
+      "-hls-syn-headers-dir=/tools/Xilinx/Vitis/2024.2/common/technology/autopilot",
+      "-fhlstoplevel=mlp_inference",
+      "-c",
+      "/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp"
+    ],
+    "file": "/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp"
+  },
+  {
+    "directory": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component",
+    "arguments": [
+      "/tools/Xilinx/Vitis/2024.2/vcxx/libexec/clang++",
+      "--gcc-toolchain=/tools/Xilinx/Vivado/2024.2/tps/lnx64/gcc-8.3.0",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=/tools/Xilinx/Vitis/2024.2/include",
+      "-c",
+      "/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp"
+    ],
+    "file": "/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp"
+  }
+]

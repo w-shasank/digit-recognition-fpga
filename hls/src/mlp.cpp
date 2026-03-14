@@ -1,7 +1,7 @@
 #include "mlp.h"
 #include "weights.h"
 
-  data8_t relu(acc_t x) {
+data8_t relu(acc_t x) {
     if (x < 0)   return 0;
     if (x > 127) return 127;
     return (data8_t)x;
@@ -57,11 +57,7 @@ void mlp_inference(data8_t input[784], int &result) {
     #pragma HLS ARRAY_PARTITION variable=layer1_out cyclic factor=4
     #pragma HLS ARRAY_PARTITION variable=layer2_out cyclic factor=4
 
-    dense_relu<L1_IN, L1_OUT>(input,      layer1_out, W1);
+    dense_relu<L1_IN, L1_OUT>(input,layer1_out, W1);
     dense_relu<L2_IN, L2_OUT>(layer1_out, layer2_out, W2);
     result = dense_argmax<L3_IN, L3_OUT>(layer2_out,  W3);
 }
-```
-
----
-

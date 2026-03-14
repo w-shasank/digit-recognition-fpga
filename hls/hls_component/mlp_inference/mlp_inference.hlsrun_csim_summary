@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/mlp_inference.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Sat Mar 14 07:19:02 2026",
+ "timestampMillis": "1773452042476",
+ "buildStep": {
+  "cmdId": "a4ba0dab-8505-4cb5-a2c1-46444118ae9b",
+  "name": "vitis-run",
+  "logFile": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/logs/mlp_inference.steps.log",
+  "commandLine": "/tools/Xilinx/Vitis/2024.2/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg --work_dir mlp_inference ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg",
+   "--work_dir",
+   "mlp_inference"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Mar 14 07:19:02 2026",
+ "timestampMillis": "1773452042476",
+ "status": {
+  "cmdId": "a4ba0dab-8505-4cb5-a2c1-46444118ae9b",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045369",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mlp_inference",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2024.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045369",
+ "buildStep": {
+  "cmdId": "c41bdd3a-aa70-46e9-a77d-d60669379acb",
+  "name": "",
+  "logFile": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045370",
+ "status": {
+  "cmdId": "c41bdd3a-aa70-46e9-a77d-d60669379acb",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045646",
+ "status": {
+  "cmdId": "c41bdd3a-aa70-46e9-a77d-d60669379acb",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045716",
+ "status": {
+  "cmdId": "a4ba0dab-8505-4cb5-a2c1-46444118ae9b",
+  "state": "CS_FAILED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045717",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sat Mar 14 07:19:05 2026",
+ "timestampMillis": "1773452045717",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

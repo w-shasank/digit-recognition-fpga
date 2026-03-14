@@ -1,0 +1,26 @@
+{
+    "rules": {
+        "['/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/csim/code_analyzer/.internal/build/tb_mlp.cpp.0.o', '/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/csim/code_analyzer/.internal/build/tb_mlp.cpp.0.o.d']": {
+            "command": [
+                "/tools/Xilinx/Vitis/2024.2/vcxx/libexec/clang",
+                "-c",
+                "-MD",
+                "-MF",
+                "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/csim/code_analyzer/.internal/build/tb_mlp.cpp.0.o.d",
+                "-fhls-tb",
+                "-hls-sim-headers-dir=/tools/Xilinx/Vitis/2024.2/vcxx/data/include",
+                "-vitis-hls=/tools/Xilinx/Vitis/2024.2",
+                "--gcc-toolchain=/tools/Xilinx/Vivado/2024.2/tps/lnx64/gcc-8.3.0",
+                "-fslxtrace",
+                "-fslx-compile-mode",
+                "-fslxskipfunctionbody",
+                "-fhlstoplevel=mlp_inference",
+                "/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp",
+                "-o",
+                "/home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/csim/code_analyzer/.internal/build/tb_mlp.cpp.0.o"
+            ],
+            "exectime": 1.1292576789855957,
+            "cwd": "/home/shashank/projects/digit-recognition-fpga/hls/hls_component"
+        }
+    }
+}

@@ -1,0 +1,3 @@
+relativeroot=/home/shashank/projects/digit-recognition-fpga/hls/hls_component
+original_argv=--mode hls --csim --config /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg --work_dir mlp_inference 
+
