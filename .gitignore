@@ -9,5 +9,10 @@ hls/hls_component/solution*/
 hls/hls_component/csim/
 hls/hls_component/syn/
 hls/hls_component/impl/
+hls/hls_component/mlp_inference/reports/
+hls/hls_component/mlp_inference/logs/
 hls/.hls/
+hls/hls_component/mlp_inference/
+hls/hls_component/vitis-comp.json
+hls/_ide/
 _ide/

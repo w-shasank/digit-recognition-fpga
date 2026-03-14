@@ -8,13 +8,13 @@ data8_t relu(acc_t x) {
 }
 
 template<int IN_SIZE, int OUT_SIZE>
-void dense_relu(
+void dense_relu_dsp(
     data8_t         in[IN_SIZE],
     data8_t         out[OUT_SIZE],
     const ap_int<8> weights[OUT_SIZE][IN_SIZE]
 ){
     for (int i = 0; i < OUT_SIZE; i++) {
-        #pragma HLS PIPELINE II=1
+        #pragma HLS PIPELINE II=784
         acc_t acc = 0;
         for (int j = 0; j < IN_SIZE; j++) {
             acc += (acc_t)weights[i][j] * (acc_t)in[j];
@@ -24,7 +24,24 @@ void dense_relu(
 }
 
 template<int IN_SIZE, int OUT_SIZE>
-int dense_argmax(
+void dense_relu_lut(
+    data8_t         in[IN_SIZE],
+    data8_t         out[OUT_SIZE],
+    const ap_int<8> weights[OUT_SIZE][IN_SIZE]
+){
+    for (int i = 0; i < OUT_SIZE; i++) {
+        #pragma HLS PIPELINE II=784
+        acc_t acc = 0;
+        for (int j = 0; j < IN_SIZE; j++) {
+            #pragma HLS RESOURCE variable=acc core=Mul_LUT
+            acc += (acc_t)weights[i][j] * (acc_t)in[j];
+        }
+        out[i] = relu(acc);
+    }
+}
+
+template<int IN_SIZE, int OUT_SIZE>
+int dense_argmax_lut(
     data8_t         in[IN_SIZE],
     const ap_int<8> weights[OUT_SIZE][IN_SIZE]
 ){
@@ -32,9 +49,10 @@ int dense_argmax(
     #pragma HLS ARRAY_PARTITION variable=scores complete
 
     for (int i = 0; i < OUT_SIZE; i++) {
-        #pragma HLS PIPELINE II=1
+        #pragma HLS PIPELINE II=784
         acc_t acc = 0;
         for (int j = 0; j < IN_SIZE; j++) {
+            #pragma HLS RESOURCE variable=acc core=Mul_LUT
             acc += (acc_t)weights[i][j] * (acc_t)in[j];
         }
         scores[i] = acc;
@@ -54,10 +72,10 @@ void mlp_inference(data8_t input[784], int &result) {
 
     data8_t layer1_out[256];
     data8_t layer2_out[128];
-    #pragma HLS ARRAY_PARTITION variable=layer1_out cyclic factor=4
-    #pragma HLS ARRAY_PARTITION variable=layer2_out cyclic factor=4
 
-    dense_relu<L1_IN, L1_OUT>(input,layer1_out, W1);
-    dense_relu<L2_IN, L2_OUT>(layer1_out, layer2_out, W2);
-    result = dense_argmax<L3_IN, L3_OUT>(layer2_out,  W3);
+    dense_relu_dsp<L1_IN, L1_OUT>(input,      layer1_out, W1);
+
+    dense_relu_lut<L2_IN, L2_OUT>(layer1_out, layer2_out, W2);
+
+    result = dense_argmax_lut<L3_IN, L3_OUT>(layer2_out, W3);
 }
