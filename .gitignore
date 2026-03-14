@@ -1,2 +1,13 @@
 .venv
 data/
+
+# vitis hls generated
+hls/hls_component/vitis-comp.json
+hls/hls_component/.llvm/
+hls/hls_component/.report/
+hls/hls_component/solution*/
+hls/hls_component/csim/
+hls/hls_component/syn/
+hls/hls_component/impl/
+hls/.hls/
+_ide/

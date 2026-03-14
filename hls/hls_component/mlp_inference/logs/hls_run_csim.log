@@ -22,12 +22,13 @@ INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
 INFO: [HLS 200-2036] Building debug C Simulation binaries
-make: 'csim.exe' is up to date.
+   Compiling ../../../../../tb/tb_mlp.cpp in debug mode
+   Compiling ../../../../../src/mlp.cpp in debug mode
+   Generating csim.exe
 Expected : 7
-Predicted: 5
-TEST FAILED 
-@E Simulation failed: Function 'main' returns nonzero value '1'.
-ERROR: [SIM 211-100] 'csim_design' failed: nonzero return value.
+Predicted: 7
+TEST PASSED 
+INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-ERROR: 4
-INFO: [HLS 200-112] Total CPU user time: 1.99 seconds. Total CPU system time: 0.37 seconds. Total elapsed time: 2.16 seconds; peak allocated memory: 218.484 MB.
+INFO: [HLS 200-112] Total CPU user time: 65.68 seconds. Total CPU system time: 1.47 seconds. Total elapsed time: 67.06 seconds; peak allocated memory: 218.488 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 1m 10s

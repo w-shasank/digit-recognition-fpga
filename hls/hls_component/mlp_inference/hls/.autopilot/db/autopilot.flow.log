@@ -1258,3 +1258,90 @@ Execute   close_project
 Execute     close_solution 
 Execute       cleanup_all 
 Execute       cleanup_all 
+Execute     source -notrace -encoding utf-8 /tools/Xilinx/Vitis/2024.2/tps/tcl/tcl8.6/clock.tcl 
+Execute       source -encoding utf-8 /tools/Xilinx/Vitis/2024.2/tps/tcl/tcl8/8.5/msgcat-1.6.1.tm 
+INFO-FLOW: Workspace /home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls opened at Sat Mar 14 07:47:39 +0545 2026
+Execute     send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Execute   apply_ini /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg 
+Execute     send_msg_by_id WARNING @200-1921@%s [hls] entry 'syn.include_path=/home/shashank/projects/digit-recognition-fpga/hls/src' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(13) 
+WARNING: [HLS 200-1921] Skipping unknown ini [hls] entry 'syn.include_path=/home/shashank/projects/digit-recognition-fpga/hls/src' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(13)
+Execute     send_msg_by_id WARNING @200-1921@%s [hls] entry 'tb.include_path=/home/shashank/projects/digit-recognition-fpga/hls/src' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(14) 
+WARNING: [HLS 200-1921] Skipping unknown ini [hls] entry 'tb.include_path=/home/shashank/projects/digit-recognition-fpga/hls/src' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(14)
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.file=/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(8) 
+INFO: [HLS 200-1465] Applying ini 'syn.file=/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(8)
+Execute     add_files /home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp 
+INFO: [HLS 200-10] Adding design file '/home/shashank/projects/digit-recognition-fpga/hls/src/mlp.cpp' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'tb.file=/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(9) 
+INFO: [HLS 200-1465] Applying ini 'tb.file=/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(9)
+Execute     add_files -tb /home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp 
+INFO: [HLS 200-10] Adding test bench file '/home/shashank/projects/digit-recognition-fpga/hls/tb/tb_mlp.cpp' to the project
+Execute     send_msg_by_id INFO @200-1465@%s 'syn.top=mlp_inference' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(7) 
+INFO: [HLS 200-1465] Applying ini 'syn.top=mlp_inference' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(7)
+Execute     set_top mlp_inference 
+Execute     send_msg_by_id INFO @200-1465@%s 'flow_target=vivado' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(4) 
+INFO: [HLS 200-1465] Applying ini 'flow_target=vivado' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(4)
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     send_msg_by_id INFO @200-1465@%s 'part=xc7a100tcsg324-1' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(1) 
+INFO: [HLS 200-1465] Applying ini 'part=xc7a100tcsg324-1' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(1)
+Execute     set_part xc7a100tcsg324-1 
+Execute       create_platform xc7a100tcsg324-1 -board  
+DBG:HLSDevice: Trying to load device library: /tools/Xilinx/Vitis/2024.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /tools/Xilinx/Vivado/2024.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7a100t-csg324-1'
+Command       create_platform done; 0.25 sec.
+Execute       source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/util.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /tools/Xilinx/Vitis/2024.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7a100t-csg324-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.35 sec.
+Execute     send_msg_by_id INFO @200-1465@%s 'clock=10ns' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(10) 
+INFO: [HLS 200-1465] Applying ini 'clock=10ns' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(10)
+Execute     create_clock -period 10ns 
+Execute       ap_set_clock -name default -period 10 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     send_msg_by_id INFO @200-1465@%s 'clock_uncertainty=27%' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(11) 
+INFO: [HLS 200-1465] Applying ini 'clock_uncertainty=27%' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(11)
+Execute     set_clock_uncertainty 27% 
+Execute       ap_set_clock -name default -uncertainty 2.7 -unit % 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 2.7ns.
+Execute     send_msg_by_id INFO @200-1465@%s 'csim.code_analyzer=0' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(12) 
+INFO: [HLS 200-1465] Applying ini 'csim.code_analyzer=0' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(12)
+Execute     config_csim -code_analyzer=0 
+Execute     send_msg_by_id INFO @200-1465@%s 'package.output.format=ip_catalog' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(5) 
+INFO: [HLS 200-1465] Applying ini 'package.output.format=ip_catalog' from /home/shashank/projects/digit-recognition-fpga/hls/hls_component/hls_config.cfg(5)
+Execute     config_export -format=ip_catalog 
+Command   apply_ini done; 0.36 sec.
+Execute   apply_ini /home/shashank/projects/digit-recognition-fpga/hls/hls_component/mlp_inference/hls/config.cmdline 
+Execute   ::AP::init_summary_file csim 
+Execute     AP::app_get_file_relativeroot [AP::app_get_root] {}
+Execute   csim_design 
+INFO-FLOW: Running SLX 'csim' proc: ::SLX::run_csim
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     send_msg_by_id INFO @200-2036@%s debug 
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+Execute     source /tools/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /tools/Xilinx/Vitis/2024.2/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     ap_part_info -name xc7a100t-csg324-1 -data info 
+Execute     source run_sim.tcl 
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command   csim_design done; 65.11 sec.
+Execute   close_project 
+Execute     close_solution 
+Execute       cleanup_all 
+Execute       cleanup_all 
