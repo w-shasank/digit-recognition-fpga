@@ -8,9 +8,9 @@ import torch.nn as nn
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
-        self.fc1 = nn.Linear(784, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 10)
+        self.fc1 = nn.Linear(784, 64,bias=False)
+        self.fc2 = nn.Linear(64, 32,bias=False)
+        self.fc3 = nn.Linear(32, 10,bias=False)
         self.relu = nn.ReLU()
 
     def forward(self, x):

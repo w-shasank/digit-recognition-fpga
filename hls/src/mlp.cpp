@@ -8,15 +8,15 @@ data8_t relu(acc_t x) {
 }
 
 template<int IN_SIZE, int OUT_SIZE>
-void dense_relu_dsp(
+void dense_relu_serial(
     data8_t         in[IN_SIZE],
     data8_t         out[OUT_SIZE],
     const ap_int<8> weights[OUT_SIZE][IN_SIZE]
 ){
     for (int i = 0; i < OUT_SIZE; i++) {
-        #pragma HLS PIPELINE II=784
         acc_t acc = 0;
         for (int j = 0; j < IN_SIZE; j++) {
+            #pragma HLS PIPELINE II=1
             acc += (acc_t)weights[i][j] * (acc_t)in[j];
         }
         out[i] = relu(acc);
@@ -24,35 +24,16 @@ void dense_relu_dsp(
 }
 
 template<int IN_SIZE, int OUT_SIZE>
-void dense_relu_lut(
-    data8_t         in[IN_SIZE],
-    data8_t         out[OUT_SIZE],
-    const ap_int<8> weights[OUT_SIZE][IN_SIZE]
-){
-    for (int i = 0; i < OUT_SIZE; i++) {
-        #pragma HLS PIPELINE II=784
-        acc_t acc = 0;
-        for (int j = 0; j < IN_SIZE; j++) {
-            #pragma HLS RESOURCE variable=acc core=Mul_LUT
-            acc += (acc_t)weights[i][j] * (acc_t)in[j];
-        }
-        out[i] = relu(acc);
-    }
-}
-
-template<int IN_SIZE, int OUT_SIZE>
-int dense_argmax_lut(
+int dense_argmax_serial(
     data8_t         in[IN_SIZE],
     const ap_int<8> weights[OUT_SIZE][IN_SIZE]
 ){
     acc_t scores[OUT_SIZE];
-    #pragma HLS ARRAY_PARTITION variable=scores complete
 
     for (int i = 0; i < OUT_SIZE; i++) {
-        #pragma HLS PIPELINE II=784
         acc_t acc = 0;
         for (int j = 0; j < IN_SIZE; j++) {
-            #pragma HLS RESOURCE variable=acc core=Mul_LUT
+            #pragma HLS PIPELINE II=1
             acc += (acc_t)weights[i][j] * (acc_t)in[j];
         }
         scores[i] = acc;
@@ -70,12 +51,14 @@ void mlp_inference(data8_t input[784], int &result) {
     #pragma HLS INTERFACE ap_none    port=result
     #pragma HLS INTERFACE ap_ctrl_hs port=return
 
-    data8_t layer1_out[256];
-    data8_t layer2_out[128];
+    #pragma HLS BIND_STORAGE variable=W1 type=ROM_2P impl=BRAM
+    #pragma HLS BIND_STORAGE variable=W2 type=ROM_2P impl=BRAM
+    #pragma HLS BIND_STORAGE variable=W3 type=ROM_2P impl=BRAM
 
-    dense_relu_dsp<L1_IN, L1_OUT>(input,      layer1_out, W1);
+    data8_t layer1_out[64];
+    data8_t layer2_out[32];
 
-    dense_relu_lut<L2_IN, L2_OUT>(layer1_out, layer2_out, W2);
-
-    result = dense_argmax_lut<L3_IN, L3_OUT>(layer2_out, W3);
+    dense_relu_serial<L1_IN,  L1_OUT>(input,      layer1_out, W1);
+    dense_relu_serial<L2_IN,  L2_OUT>(layer1_out, layer2_out, W2);
+    result = dense_argmax_serial<L3_IN, L3_OUT>(layer2_out,   W3);
 }

@@ -5,9 +5,9 @@ import torch.nn as nn
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
-        self.fc1 = nn.Linear(784, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 10)
+        self.fc1 = nn.Linear(784, 64,bias=False)
+        self.fc2 = nn.Linear(64, 32,bias=False)
+        self.fc3 = nn.Linear(32, 10,bias=False)
         self.relu = nn.ReLU()
     def forward(self, x):
         x = x.view(-1, 784)
@@ -76,15 +76,15 @@ def main():
 
         f.write("// --- Layer dimensions ---\n")
         f.write("#define L1_IN  784\n")
-        f.write("#define L1_OUT 256\n")
-        f.write("#define L2_IN  256\n")
-        f.write("#define L2_OUT 128\n")
-        f.write("#define L3_IN  128\n")
+        f.write("#define L1_OUT 64\n")
+        f.write("#define L2_IN  64\n")
+        f.write("#define L2_OUT 32\n")
+        f.write("#define L3_IN  32\n")
         f.write("#define L3_OUT 10\n\n")
 
-        write_layer(f, w1, "W1", "Layer 1: 256 x 784")
-        write_layer(f, w2, "W2", "Layer 2: 128 x 256")
-        write_layer(f, w3, "W3", "Layer 3: 10  x 128")
+        write_layer(f, w1, "W1", "Layer 1: 64 x 784")
+        write_layer(f, w2, "W2", "Layer 2: 32 x 64")
+        write_layer(f, w3, "W3", "Layer 3: 10  x 32")
 
         f.write("#endif // WEIGHTS_H\n")
 
