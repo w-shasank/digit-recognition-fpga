@@ -1,7 +1,6 @@
 .venv
 data/
 
-# vitis hls generated
 hls/hls_component/vitis-comp.json
 hls/hls_component/.llvm/
 hls/hls_component/.report/
@@ -16,3 +15,21 @@ hls/hls_component/mlp_inference/
 hls/hls_component/vitis-comp.json
 hls/_ide/
 _ide/
+model.pt
+vitis_hls.log
+scripts/scales.npy
+scripts/w1_int8.npy
+scripts/w2_int8.npy
+scripts/w3_int8.npy
+hls/hls_component/test_image.h
+hls/hls_component/weights.h
+
+*.log
+*.jou
+*.str
+*.vitis_hls.log
+*.vitis_hls.jou
+*.vitis_hls.str
+
+.Xil/
+vivado/minst_fpga/

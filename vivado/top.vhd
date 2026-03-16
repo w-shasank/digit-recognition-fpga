@@ -7,13 +7,13 @@ entity top is
         CLK1      : in  STD_LOGIC;
         RESET     : in  STD_LOGIC;
         seven_seg : out STD_LOGIC_VECTOR(7 downto 0);
-        enable    : out STD_LOGIC_VECTOR(3 downto 0)
+        enable    : out STD_LOGIC_VECTOR(3 downto 0);
+        LED       : out STD_LOGIC_VECTOR(3 downto 0)  -- ← add this
     );
 end top;
 
 architecture Behavioral of top is
 
-  -- mlp inference component 
     component mlp_inference is
         port (
             ap_clk           : in  STD_LOGIC;
@@ -90,5 +90,11 @@ begin
 
     seven_seg <= seven_seg_sig;
     enable    <= enable_sig;
+
+    -- debug: route result to LEDs
+    LED(0) <= result_sig(0);
+    LED(1) <= result_sig(1);
+    LED(2) <= result_sig(2);
+    LED(3) <= result_sig(3);
 
 end Behavioral;

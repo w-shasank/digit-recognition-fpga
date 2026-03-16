@@ -32,7 +32,7 @@ transform = transforms.Compose([
     transforms.Normalize((0.1307,), (0.3081,))
 ])
 dataset    = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
-image, label = dataset[0]
+image, label = dataset[3]
 pixels     = image.view(-1).numpy()
 
 

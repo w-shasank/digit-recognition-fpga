@@ -15,22 +15,24 @@ end seg7_decoder;
 architecture Behavioral of seg7_decoder is
 
     function digit_to_seg(digit : STD_LOGIC_VECTOR(3 downto 0))
-        return STD_LOGIC_VECTOR is
-    begin
-        case digit is
-            when "0000" => return "11000000";
-            when "0001" => return "11111001";
-            when "0010" => return "10100100";
-            when "0011" => return "10110000";
-            when "0100" => return "10011001";
-            when "0101" => return "10010010";
-            when "0110" => return "10000010";
-            when "0111" => return "11111000";
-            when "1000" => return "10000000";
-            when "1001" => return "10010000";
-            when others => return "10111111";
-        end case;
-    end function;
+    return STD_LOGIC_VECTOR is
+begin
+    -- bit order: g f e dp d c b a
+    -- active LOW (0=ON 1=OFF) dp always OFF
+    case digit is
+        when "0000" => return "00010001"; -- 0  ✅
+        when "0001" => return "11010111"; -- 1  ✅
+        when "0010" => return "00110010"; -- 2
+        when "0011" => return "10010010"; -- 3
+        when "0100" => return "11010100"; -- 4
+        when "0101" => return "10011000"; -- 5
+        when "0110" => return "00011000"; -- 6
+        when "0111" => return "11010011"; -- 7  ✅
+        when "1000" => return "00010000"; -- 8
+        when "1001" => return "10010000"; -- 9
+        when others => return "11111110"; -- dash
+    end case;
+end function;
 
 begin
 
